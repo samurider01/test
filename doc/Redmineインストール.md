@@ -1,20 +1,19 @@
 # CentOS6へRedmine3.1インストール
 
-  ## 概要
+## 概要 
 
-    ターゲット環境(条件)
-    - OS: CentOS6.5 (on Vagrant)
-    - メモリ: 2GB (1GBだとRubyのコンパイルで落ちる)
-    - Redmineバージョン: 3.1.1 (2015/09/20時点の最新)
-    - DB: MySQL
+    ターゲット環境(条件)  
+    - OS: CentOS6.5 (on Vagrant)  
+    - メモリ: 2GB (1GBだとRubyのコンパイルで落ちる)  
+    - Redmineバージョン: 3.1.1 (2015/09/20時点の最新)  
+    - DB: MySQL  
 
-  ## Linuxユーザ追加(未検証)
-    ```
-    # visudo
-    ------------
+## Linuxユーザ追加(未検証)  
+
+    ```  
+    # visudo  
     (一番下に↓の行を追加する)
     %redmine ALL=(ALL) ALL
-    ------------
     
     # passwd redmine
     # 
@@ -22,11 +21,12 @@
     # sudo ls -l /root
     ```
 
-  ## 最新Ruby+Railsをインストール
-  
+## 最新Ruby+Railsをインストール
+
       Redmineの最新版では、Ruby1.9以降のバージョンが必要になるためバージョンアップします。
   
-    ### コンパイルに必要なツール群をインストール
+### コンパイルに必要なツール群をインストール
+
     ```
     # su -
     # yum groupinstall -y 'Development Tools'
@@ -35,7 +35,8 @@
     # yum install -y gdbm-devel tcl-devel openssl-devel db4-devel
     ```
 
-    ### rbenvのインストール
+### rbenvのインストール
+
     ```
     # su - redmine
     $ cd 
@@ -46,19 +47,22 @@
     $ ./install.sh
     ```
   
-    ### rbenvのパスを通す
+### rbenvのパスを通す
+
     ```
     $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
     $ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
     $ source ~/.bash_profile
     ```
 
-    ### rbenvのバージョンチェック
+### rbenvのバージョンチェック
+
     ```
     $ rbenv
     ```
   
-    ### Ruby最新版のインストール
+### Ruby最新版のインストール
+
     ```
     $ rbenv install -l
     $ rbenv install 2.2.3
@@ -67,7 +71,8 @@
     $ ruby -v
     ```
   
-    ### Railsのインストール
+### Railsのインストール
+
     ```
     $ gem list -r --all rails
     $ rbenv exec gem install rails
@@ -82,8 +87,10 @@
     ※現在(15/09/25)の安定版は「2.2.3」
 
 
-  ## Redmineのインストール
-    ### Redmineソースのダウンロードと配置
+## Redmineのインストール
+
+### Redmineソースのダウンロードと配置
+
     ```
     # su -
     # cd /usr/local/src
@@ -93,14 +100,16 @@
     # chown -R redmine:redmine /opt/redmine
     ```
 
-    ### MySQLインストール
+### MySQLインストール
+
     ```
     # yum -y install mysql-server mysql-devel
     # service mysqld start
     # chkconfig mysqld on
     ```
 
-    ### 空のDBとそのDBに接続するためのユーザ作成
+### 空のDBとそのDBに接続するためのユーザ作成
+
     ```
     # mysql
     mysql> create database redmine character set utf8;
@@ -109,7 +118,8 @@
     mysql> quit
     ```
 
-    ### DB接続設定ファイルを作成
+### DB接続設定ファイルを作成
+
     ```
     $ su - redmine
     $ cd /opt/redmine
@@ -126,49 +136,56 @@
     -----
     ```
 
-    ### Bundlerのインストール
+### Bundlerのインストール
+
     ```
     $ cd /opt/redmine
     $ gem install bundler
     $ bundle install --without development test postgresql sqlite
     ```
 
-    ### セッションストア秘密鍵を生成
+### セッションストア秘密鍵を生成
+
     ```
     $ rake generate_secret_token
     ```
 
-    ### データベース上にテーブルを作成
+### データベース上にテーブルを作成
+
     ```
     $ RAILS_ENV=production rake db:migrate
     $ RAILS_ENV=production rake redmine:load_default_data
     ```
 
-    ### パーミッションの設定
+### パーミッションの設定
+
     ```
     $ mkdir tmp public/plugin_assets 
     $ sudo chown -R redmine:redmine files log tmp public/plugin_assets
     $ sudo chmod -R 755 files log tmp public/plugin_assets
     ```
 
-    ### WEBrickによるwebサーバを起動
+### WEBrickによるwebサーバを起動
+
     ```
     $ ruby bin/rails server webrick -e production -b 192.168.33.10
     ```
     ※末尾はサーバのIP
 
-    ### ブラウザからRedmineにログイン
+### ブラウザからRedmineにログイン
+
     - URL : http://192.168.33.10:3000
     - login : admin
     - password : admin
 
-    ### 公式サイトの手順を参考に下記設定も実施する
+### 公式サイトの手順を参考に下記設定も実施する
+
     - ログの設定
     - SMTPサーバの設定
     - バックアップ
 
 
-  ## 参考サイト:
+## 参考サイト:  
   - 公式
   http://redmine.jp/guide/RedmineInstall/
 
@@ -176,15 +193,17 @@
   http://www.aetherworks.org/article/112066375.html
 
 
-  ## (以降は作成中手順)
+## (以降は作成中手順)
 
-  ## Apacheインストール
-    ### Apacheインストール
+## Apacheインストール
+
+### Apacheインストール
+
     ```
     yum -y install httpd mod_ssl
     ```
 
-    ### httpd.confに下記追加
+### httpd.confに下記追加
     ```
     vim /etc/conf/httpd.conf
     ※末尾に追加
@@ -196,8 +215,10 @@
     ```
 
 
-  ## 遭遇したエラー
-    ### エラー１
+## 遭遇したエラー
+
+### エラー１
+
     ```
     $ bundle install --without development test postgresql sqlite
     
@@ -222,7 +243,8 @@
     Parsing documentation for rbpdf-1.18.6
     ```
 
-    ### エラー2
+### エラー2
+
     ```
     [root@vagrant-centos65 redmine]# ruby script/rails server webrick -e production
     script/rails no longer exists, please use bin/rails instead.
@@ -231,7 +253,8 @@
     ```
 
 
-    ### エラー3
+### エラー3
+
     ```
     passenger-install-apache2-module
     ～中略～
@@ -262,7 +285,8 @@
     ```
 
 
-    ## エラー4
+## エラー4
+
     ```
     c++: internal compiler error: Killed (program cc1plus)
     ```
