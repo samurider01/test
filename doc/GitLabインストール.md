@@ -1,14 +1,14 @@
 # CentOS6 + GitLab環境構築
-~~~
+```
 cd C:\vagrant_work
 mkdir centos6_git_redmine
 vagrant box add centos65 http://www.lyricalsoftware.com/downloads/centos65.box
 vagrant init centos65
 vagrant up
-~~~
+```
 
 root/vagrantでSSH接続
-~~~
+```
 yum -y install curl openssh-server postfix cronie
 service postfix start
 chkconfig postfix on
@@ -18,7 +18,7 @@ curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rp
 yum -y install gitlab-ce
 
 gitlab-ctl reconfigure
-~~~
+```
 
 ⇒実行前に仮想環境のメモリサイズを1GB以上に変更すべき
 
