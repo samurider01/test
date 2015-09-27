@@ -1,18 +1,18 @@
-# CentOS6‚ÖRedmine3.1ƒCƒ“ƒXƒg[ƒ‹
+# CentOS6ã¸Redmine3.1ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 
-  ## ŠT—v
+  ## æ¦‚è¦
 
-    ƒ^[ƒQƒbƒgŠÂ‹«(ğŒ)
+    ã‚¿ãƒ¼ã‚²ãƒƒãƒˆç’°å¢ƒ(æ¡ä»¶)
     - OS: CentOS6.5 (on Vagrant)
-    - ƒƒ‚ƒŠ: 2GB (1GB‚¾‚ÆRuby‚ÌƒRƒ“ƒpƒCƒ‹‚Å—‚¿‚é)
-    - Redmineƒo[ƒWƒ‡ƒ“: 3.1.1 (2015/09/20“_‚ÌÅV)
+    - ãƒ¡ãƒ¢ãƒª: 2GB (1GBã ã¨Rubyã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã§è½ã¡ã‚‹)
+    - Redmineãƒãƒ¼ã‚¸ãƒ§ãƒ³: 3.1.1 (2015/09/20æ™‚ç‚¹ã®æœ€æ–°)
     - DB: MySQL
 
-  ## Linuxƒ†[ƒU’Ç‰Á(–¢ŒŸØ)
+  ## Linuxãƒ¦ãƒ¼ã‚¶è¿½åŠ (æœªæ¤œè¨¼)
     ```
     # visudo
     ------------
-    (ˆê”Ô‰º‚É«‚Ìs‚ğ’Ç‰Á‚·‚é)
+    (ä¸€ç•ªä¸‹ã«â†“ã®è¡Œã‚’è¿½åŠ ã™ã‚‹)
     %redmine ALL=(ALL) ALL
     ------------
     
@@ -22,11 +22,11 @@
     # sudo ls -l /root
     ```
 
-  ## ÅVRuby+Rails‚ğƒCƒ“ƒXƒg[ƒ‹
+  ## æœ€æ–°Ruby+Railsã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
   
-      Redmine‚ÌÅV”Å‚Å‚ÍARuby1.9ˆÈ~‚Ìƒo[ƒWƒ‡ƒ“‚ª•K—v‚É‚È‚é‚½‚ßƒo[ƒWƒ‡ƒ“ƒAƒbƒv‚µ‚Ü‚·B
+      Redmineã®æœ€æ–°ç‰ˆã§ã¯ã€Ruby1.9ä»¥é™ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒå¿…è¦ã«ãªã‚‹ãŸã‚ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚¢ãƒƒãƒ—ã—ã¾ã™ã€‚
   
-    ### ƒRƒ“ƒpƒCƒ‹‚É•K—v‚Èƒc[ƒ‹ŒQ‚ğƒCƒ“ƒXƒg[ƒ‹
+    ### ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¿…è¦ãªãƒ„ãƒ¼ãƒ«ç¾¤ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     # su -
     # yum groupinstall -y 'Development Tools'
@@ -35,7 +35,7 @@
     # yum install -y gdbm-devel tcl-devel openssl-devel db4-devel
     ```
 
-    ### rbenv‚ÌƒCƒ“ƒXƒg[ƒ‹
+    ### rbenvã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     # su - redmine
     $ cd 
@@ -46,19 +46,19 @@
     $ ./install.sh
     ```
   
-    ### rbenv‚ÌƒpƒX‚ğ’Ê‚·
+    ### rbenvã®ãƒ‘ã‚¹ã‚’é€šã™
     ```
     $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
     $ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
     $ source ~/.bash_profile
     ```
 
-    ### rbenv‚Ìƒo[ƒWƒ‡ƒ“ƒ`ƒFƒbƒN
+    ### rbenvã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãƒã‚§ãƒƒã‚¯
     ```
     $ rbenv
     ```
   
-    ### RubyÅV”Å‚ÌƒCƒ“ƒXƒg[ƒ‹
+    ### Rubyæœ€æ–°ç‰ˆã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     $ rbenv install -l
     $ rbenv install 2.2.3
@@ -67,23 +67,23 @@
     $ ruby -v
     ```
   
-    ### Rails‚ÌƒCƒ“ƒXƒg[ƒ‹
+    ### Railsã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     $ gem list -r --all rails
     $ rbenv exec gem install rails
     $ rbenv rehash
     $ rails -v
     ```
-    Ë Rails 4.2.4 ‚ª•\¦‚³‚ê‚é
+    â‡’ Rails 4.2.4 ãŒè¡¨ç¤ºã•ã‚Œã‚‹
   
   
-    * QlƒTƒCƒgF
+    * å‚è€ƒã‚µã‚¤ãƒˆï¼š
     http://qiita.com/icche/items/801ce357d41fd0137b79
-    ¦Œ»İ(15/09/25)‚ÌˆÀ’è”Å‚Íu2.2.3v
+    â€»ç¾åœ¨(15/09/25)ã®å®‰å®šç‰ˆã¯ã€Œ2.2.3ã€
 
 
-  ## Redmine‚ÌƒCƒ“ƒXƒg[ƒ‹
-    ### Redmineƒ\[ƒX‚Ìƒ_ƒEƒ“ƒ[ƒh‚Æ”z’u
+  ## Redmineã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+    ### Redmineã‚½ãƒ¼ã‚¹ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã¨é…ç½®
     ```
     # su -
     # cd /usr/local/src
@@ -93,14 +93,14 @@
     # chown -R redmine:redmine /opt/redmine
     ```
 
-    ### MySQLƒCƒ“ƒXƒg[ƒ‹
+    ### MySQLã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     # yum -y install mysql-server mysql-devel
     # service mysqld start
     # chkconfig mysqld on
     ```
 
-    ### ‹ó‚ÌDB‚Æ‚»‚ÌDB‚ÉÚ‘±‚·‚é‚½‚ß‚Ìƒ†[ƒUì¬
+    ### ç©ºã®DBã¨ãã®DBã«æ¥ç¶šã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ã‚¶ä½œæˆ
     ```
     # mysql
     mysql> create database redmine character set utf8;
@@ -109,13 +109,13 @@
     mysql> quit
     ```
 
-    ### DBÚ‘±İ’èƒtƒ@ƒCƒ‹‚ğì¬
+    ### DBæ¥ç¶šè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆ
     ```
     $ su - redmine
     $ cd /opt/redmine
     $ cp config/database.example.yml. config/database.yml
     $ vim config/database.yml
-    ¦"production"ŠÂ‹«—p‚Ìƒf[ƒ^ƒx[ƒXİ’è‚ğC³
+    â€»"production"ç’°å¢ƒç”¨ã®ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹è¨­å®šã‚’ä¿®æ­£
     -----
     production:
       adapter: mysql2
@@ -126,68 +126,68 @@
     -----
     ```
 
-    ### Bundler‚ÌƒCƒ“ƒXƒg[ƒ‹
+    ### Bundlerã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     $ cd /opt/redmine
     $ gem install bundler
     $ bundle install --without development test postgresql sqlite
     ```
 
-    ### ƒZƒbƒVƒ‡ƒ“ƒXƒgƒA”é–§Œ®‚ğ¶¬
+    ### ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¹ãƒˆã‚¢ç§˜å¯†éµã‚’ç”Ÿæˆ
     ```
     $ rake generate_secret_token
     ```
 
-    ### ƒf[ƒ^ƒx[ƒXã‚Éƒe[ƒuƒ‹‚ğì¬
+    ### ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ä¸Šã«ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆ
     ```
     $ RAILS_ENV=production rake db:migrate
     $ RAILS_ENV=production rake redmine:load_default_data
     ```
 
-    ### ƒp[ƒ~ƒbƒVƒ‡ƒ“‚Ìİ’è
+    ### ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã®è¨­å®š
     ```
     $ mkdir tmp public/plugin_assets 
     $ sudo chown -R redmine:redmine files log tmp public/plugin_assets
     $ sudo chmod -R 755 files log tmp public/plugin_assets
     ```
 
-    ### WEBrick‚É‚æ‚éwebƒT[ƒo‚ğ‹N“®
+    ### WEBrickã«ã‚ˆã‚‹webã‚µãƒ¼ãƒã‚’èµ·å‹•
     ```
     $ ruby bin/rails server webrick -e production -b 192.168.33.10
     ```
-    ¦––”ö‚ÍƒT[ƒo‚ÌIP
+    â€»æœ«å°¾ã¯ã‚µãƒ¼ãƒã®IP
 
-    ### ƒuƒ‰ƒEƒU‚©‚çRedmine‚ÉƒƒOƒCƒ“
+    ### ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰Redmineã«ãƒ­ã‚°ã‚¤ãƒ³
     - URL : http://192.168.33.10:3000
     - login : admin
     - password : admin
 
-    ### Œö®ƒTƒCƒg‚Ìè‡‚ğQl‚É‰º‹Lİ’è‚àÀ{‚·‚é
-    - ƒƒO‚Ìİ’è
-    - SMTPƒT[ƒo‚Ìİ’è
-    - ƒoƒbƒNƒAƒbƒv
+    ### å…¬å¼ã‚µã‚¤ãƒˆã®æ‰‹é †ã‚’å‚è€ƒã«ä¸‹è¨˜è¨­å®šã‚‚å®Ÿæ–½ã™ã‚‹
+    - ãƒ­ã‚°ã®è¨­å®š
+    - SMTPã‚µãƒ¼ãƒã®è¨­å®š
+    - ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
 
 
-  ## QlƒTƒCƒg:
-  - Œö®
+  ## å‚è€ƒã‚µã‚¤ãƒˆ:
+  - å…¬å¼
   http://redmine.jp/guide/RedmineInstall/
 
-  - CentOS6‚ÉRedmine‚ğ“±“ü‚µ‚½‚Æ‚«‚Ìè‡ƒƒ‚
+  - CentOS6ã«Redmineã‚’å°å…¥ã—ãŸã¨ãã®æ‰‹é †ãƒ¡ãƒ¢
   http://www.aetherworks.org/article/112066375.html
 
 
-  ## (ˆÈ~‚Íì¬’†è‡)
+  ## (ä»¥é™ã¯ä½œæˆä¸­æ‰‹é †)
 
-  ## ApacheƒCƒ“ƒXƒg[ƒ‹
-    ### ApacheƒCƒ“ƒXƒg[ƒ‹
+  ## Apacheã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+    ### Apacheã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
     ```
     yum -y install httpd mod_ssl
     ```
 
-    ### httpd.conf‚É‰º‹L’Ç‰Á
+    ### httpd.confã«ä¸‹è¨˜è¿½åŠ 
     ```
     vim /etc/conf/httpd.conf
-    ¦––”ö‚É’Ç‰Á
+    â€»æœ«å°¾ã«è¿½åŠ 
     LoadModule passenger_module /root/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/passenger-5.0.20/buildout/apache2/mod_passenger.so
     <IfModule mod_passenger.c>
       PassengerRoot /root/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/passenger-5.0.20
@@ -196,8 +196,8 @@
     ```
 
 
-  ## ‘˜‹ö‚µ‚½ƒGƒ‰[
-    ### ƒGƒ‰[‚P
+  ## é­é‡ã—ãŸã‚¨ãƒ©ãƒ¼
+    ### ã‚¨ãƒ©ãƒ¼ï¼‘
     ```
     $ bundle install --without development test postgresql sqlite
     
@@ -222,7 +222,7 @@
     Parsing documentation for rbpdf-1.18.6
     ```
 
-    ### ƒGƒ‰[2
+    ### ã‚¨ãƒ©ãƒ¼2
     ```
     [root@vagrant-centos65 redmine]# ruby script/rails server webrick -e production
     script/rails no longer exists, please use bin/rails instead.
@@ -231,10 +231,10 @@
     ```
 
 
-    ### ƒGƒ‰[3
+    ### ã‚¨ãƒ©ãƒ¼3
     ```
     passenger-install-apache2-module
-    `’†—ª`
+    ï½ä¸­ç•¥ï½
     --------------------------------------------
     
     Installation instructions for required software
@@ -253,7 +253,7 @@
         
     If the aforementioned instructions didn't solve your problem, then please take
     a look at our documentation for troubleshooting tips:
-    `’†—ª`
+    ï½ä¸­ç•¥ï½
     
     yum install libcurl-devel
     yum install httpd-devel
@@ -262,9 +262,9 @@
     ```
 
 
-    ## ƒGƒ‰[4
+    ## ã‚¨ãƒ©ãƒ¼4
     ```
     c++: internal compiler error: Killed (program cc1plus)
     ```
-    Ë‰¼‘zŠÂ‹«‚Ìƒƒ‚ƒŠ‚ğ2GB‚ÉƒXƒP[ƒ‹ƒAƒbƒv
+    â‡’ä»®æƒ³ç’°å¢ƒã®ãƒ¡ãƒ¢ãƒªã‚’2GBã«ã‚¹ã‚±ãƒ¼ãƒ«ã‚¢ãƒƒãƒ—
 
