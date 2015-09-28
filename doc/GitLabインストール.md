@@ -1,4 +1,4 @@
-# CentOS6 + GitLabŠÂ‹«\’z
+# CentOS6 + GitLabç’°å¢ƒæ§‹ç¯‰
 ```
 cd C:\vagrant_work
 mkdir centos6_git_redmine
@@ -7,7 +7,7 @@ vagrant init centos65
 vagrant up
 ```
 
-root/vagrant‚ÅSSHÚ‘±
+root/vagrantã§SSHæ¥ç¶š
 ```
 yum -y install curl openssh-server postfix cronie
 service postfix start
@@ -20,13 +20,13 @@ yum -y install gitlab-ce
 gitlab-ctl reconfigure
 ```
 
-ËÀs‘O‚É‰¼‘zŠÂ‹«‚Ìƒƒ‚ƒŠƒTƒCƒY‚ğ1GBˆÈã‚É•ÏX‚·‚×‚«
+â‡’å®Ÿè¡Œå‰ã«ä»®æƒ³ç’°å¢ƒã®ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‚’1GBä»¥ä¸Šã«å¤‰æ›´ã™ã¹ã
 
 
 
-## ƒŠƒ“ƒNW
-ŠJ”­ŠÂ‹«‚ÌGitlab
+## ãƒªãƒ³ã‚¯é›†
+é–‹ç™ºç’°å¢ƒã®Gitlab
 http://192.168.33.10/users/sign_in
 
-Gitlab/Redmine˜AŒg
+Gitlab/Redmineé€£æº
 http://d.hatena.ne.jp/toritori0318/20140620/1403287430
