@@ -3,6 +3,7 @@
 ## いいいい
 ## うううう
 ~~~
+# .configure
 # make
 # make install
 ~~~
