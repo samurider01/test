@@ -6,3 +6,5 @@
 # make
 # make install
 ~~~
+
+Copyright
