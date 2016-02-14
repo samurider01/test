@@ -3,5 +3,5 @@
 echo "Hello World";
 
 
-echo "copyright (c) myapp\n";
+echo "copyright (c) myapp powerd by samurider\n";
 
